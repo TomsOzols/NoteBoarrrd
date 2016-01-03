@@ -4,21 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Resources.Res;
 
 namespace NoteBoarrd.Models
 {
+    
     public class AccountModels
     {
         public class LoginModel
         {
             [Required]
-            [Display(Name = "Email")]
+            [Display(ResourceType = typeof(WebResources), Name = "Email")]
             [EmailAddress]
             public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(ResourceType = typeof(WebResources), Name = "Password")]
             public string Password { get; set; }
         }
 
@@ -26,17 +28,17 @@ namespace NoteBoarrd.Models
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "")]
+            [Display(ResourceType = typeof(WebResources), Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long", MinimumLength = 6)]
+            [StringLength(50, ErrorMessageResourceName = "PasswordLengthTooLow", ErrorMessageResourceType = typeof(WebResources), MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "")]
+            [Display(Name = "Password", ResourceType = typeof(WebResources))]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "")]
+            [Display(ResourceType = typeof(WebResources), Name = "RepeatPass")]
             public string RepeatPassword { get; set; }
         }
     }

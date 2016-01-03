@@ -15,9 +15,9 @@ namespace NoteBoarrd
                     "~/Scripts/jquery-{version}.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                    ""
-                ));
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //        ""
+            //    ));
         }
     }
 }

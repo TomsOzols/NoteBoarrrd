@@ -1,0 +1,17 @@
+﻿@model NoteBoarrd.Models.AccountModels.LoginModel
+@using Resources.Res
+<div class="LoginForm">
+    @using(Html.BeginForm())
+    {
+        <div class="EmailInput">
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password)
+        </div>
+        @Html.AntiForgeryToken();
+        <input type="submit" value="@WebResources.Login"/>
+    }
+</div>

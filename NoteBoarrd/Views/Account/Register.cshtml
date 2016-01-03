@@ -1,0 +1,22 @@
+﻿@model NoteBoarrd.Models.AccountModels.RegisterModel
+@using Resources.Res
+<div class="RegisterForm">
+    @using (Html.BeginForm())
+    {
+        <div class="EmailInput">
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)
+        </div>
+        <div class="PasswordInput">
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password)
+
+        </div>
+        <div class="PassworRepeatInput">
+            @Html.LabelFor(x => x.RepeatPassword)
+            @Html.PasswordFor(x => x.RepeatPassword)
+        </div>
+        @Html.AntiForgeryToken()
+        <input type="submit" value="@WebResources.Register" />
+    }
+</div>
