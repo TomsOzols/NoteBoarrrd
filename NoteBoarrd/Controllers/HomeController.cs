@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace NoteBoarrd.Controllers
 {
-    
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Home

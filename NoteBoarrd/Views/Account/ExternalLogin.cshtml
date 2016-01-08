@@ -1,0 +1,27 @@
+﻿@using Microsoft.Owin.Security
+@{ 
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0)
+    {
+        <div>
+            <p>
+                Sad times, no login providers.
+            </p>
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account"))
+        {
+            @Html.AntiForgeryToken()
+            <div>
+                <p>
+                    @foreach(AuthenticationDescription Ad in loginProviders)
+                    {
+                        <button type="submit" id="@Ad.AuthenticationType" name="provider" value="@Ad.AuthenticationType" title="//!!TODO @Ad.Caption">@Ad.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

@@ -40,10 +40,10 @@ namespace NoteBoarrd
 
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            //app.UseMicrosoftAccountAuthentication(
-            //        clientId: "",
-            //        clientSecret: ""
-            //        );
+            app.UseMicrosoftAccountAuthentication(
+                    clientId: "000000004017D6A1",
+                    clientSecret: "PO3UBvyHo9NkY1TxEsLk3HimyU5i21bv"
+                    );
 
             //app.UseFacebookAuthentication(
             //        appId: "",

@@ -1,4 +1,4 @@
-﻿@model NoteBoarrd.Models.AccountModels.LoginModel
+﻿@model NoteBoarrd.Models.LoginModel
 @using Resources.Res
 <div class="LoginForm">
     @using(Html.BeginForm())
@@ -14,4 +14,5 @@
         @Html.AntiForgeryToken();
         <input type="submit" value="@WebResources.Login"/>
     }
+    @Html.Partial("ExternalLogin")
 </div>
