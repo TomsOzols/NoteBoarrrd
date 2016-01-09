@@ -15,8 +15,8 @@
         @using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id="Language" }))
         {
 
-            @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label("Latvian")
-            @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label("English")
+            @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
+            @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
             <input type="submit" value="@WebResources.ChangeLanguage" />
         }
     </div>

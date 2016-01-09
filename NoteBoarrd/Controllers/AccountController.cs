@@ -16,13 +16,7 @@ namespace NoteBoarrd.Controllers
 {
     [Authorize]
     public class AccountController : Controller
-    {
-        // GET: Account
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
+    {        
         ApplicationSignInManager signInManager;
         ApplicationUserManager userManager;
 
@@ -99,12 +93,34 @@ namespace NoteBoarrd.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public ActionResult Register()
         {
             return View();
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                AddErrors(result);
+            }
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Language(string name)
         {

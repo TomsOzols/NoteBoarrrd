@@ -117,35 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change Language</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="English" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="Latvian" xml:space="preserve">
-    <value>Latviešu</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="PasswordLengthTooLow" xml:space="preserve">
-    <value>The {0} must be at least {2} characters long</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>Register</value>
-  </data>
-  <data name="RepeatPass" xml:space="preserve">
-    <value>Repeat password</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>NoteBoard</value>
-    <comment>Propably shouldn't change among resource files</comment>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>
