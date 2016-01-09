@@ -8,6 +8,7 @@
     <title>@WebResources.Title</title>
 </head>
 <body>
+    @System.Web.Optimization.Styles.Render("~/Content/Layout")
     <div id="Navbar">
         <p>@Thread.CurrentThread.CurrentCulture</p>
         @Html.ActionLink(WebResources.Register, "Register", "Account")
@@ -18,6 +19,14 @@
             @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
             @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
             <input type="submit" value="@WebResources.ChangeLanguage" />
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
+            {
+                <input type="submit" value="@WebResources.LogOut" />
+                @Html.AntiForgeryToken()
+            }
         }
     </div>
     <div id="Content">

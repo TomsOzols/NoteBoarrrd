@@ -120,6 +120,14 @@ namespace NoteBoarrd.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOut()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login");
+        }
+
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Language(string name)
