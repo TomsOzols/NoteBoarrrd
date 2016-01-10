@@ -16,7 +16,8 @@ namespace NoteBoarrd
                 ));
 
             bundles.Add(new StyleBundle("~/Content/Layout").Include(
-                    "~/CSS/LayoutStyle.css"
+                    "~/CSS/LayoutStyle.css",
+                    "~/CSS/AuthenticationStyle.css"
                 ));
         }
     }

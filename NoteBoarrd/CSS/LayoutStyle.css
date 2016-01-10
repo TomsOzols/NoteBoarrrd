@@ -1,3 +1,27 @@
-﻿#Navbar{
-    display: inline-block
+﻿body a{
+    color: white;
+    text-decoration: none;
 }
+
+#Navbar{
+    display: inline-block;
+    clear:both;
+    width:100%;
+    background-color: black;
+    color: white;
+}
+    
+    #Navbar #Logout{
+        float:right;
+        clear:both;
+    }
+
+#Content{
+    color:black;
+
+
+}
+
+    #Content a{
+        color:black;
+    }

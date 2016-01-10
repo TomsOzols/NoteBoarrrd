@@ -170,6 +170,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\AuthenticationStyle.css" />
     <Content Include="CSS\LayoutStyle.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
@@ -182,11 +183,20 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Attributes\CultureSetAttribute.cs" />
+    <Compile Include="Controllers\BoardController.cs" />
+    <Compile Include="Controllers\HubController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DatabaseContext.cs" />
     <Compile Include="Migrations\201601091226564_InitialCreate.cs" />
     <Compile Include="Migrations\201601091226564_InitialCreate.Designer.cs">
       <DependentUpon>201601091226564_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BoardModel.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\NoteModel.cs" />
+    <Compile Include="Queries\BoardQueries.cs" />
+    <Compile Include="Queries\HubQueries.cs" />
     <Compile Include="Resources\WebResources.lv-LV.Designer.cs">
       <DependentUpon>WebResources.lv-LV.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -221,6 +231,10 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\ExternalLogin.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Hub\Index.cshtml" />
+    <Content Include="Views\Hub\BoardList.cshtml" />
+    <Content Include="Views\Board\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

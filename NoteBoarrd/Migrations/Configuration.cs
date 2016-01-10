@@ -5,7 +5,7 @@ namespace NoteBoarrd.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<NoteBoarrd.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NoteBoarrd.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -14,7 +14,7 @@ namespace NoteBoarrd.Migrations
             ContextKey = "NoteBoarrd.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(NoteBoarrd.Models.ApplicationDbContext context)
+        protected override void Seed(NoteBoarrd.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -10,24 +10,32 @@
 <body>
     @System.Web.Optimization.Styles.Render("~/Content/Layout")
     <div id="Navbar">
-        <p>@Thread.CurrentThread.CurrentCulture</p>
-        @Html.ActionLink(WebResources.Register, "Register", "Account")
-        @Html.ActionLink(WebResources.Login, "Login", "Account")
-        @using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id="Language" }))
-        {
-
-            @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
-            @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
-            <input type="submit" value="@WebResources.ChangeLanguage" />
-        }
-        @if (User.Identity.IsAuthenticated)
-        {
-            using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
+        <div>
+            @using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id = "Language" }))
             {
-                <input type="submit" value="@WebResources.LogOut" />
-                @Html.AntiForgeryToken()
+
+                @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
+                @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
+                <input type="submit" value="@WebResources.ChangeLanguage" />
             }
-        }
+        </div>
+        <div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
+                {
+                    <input type="submit" value="@WebResources.LogOut" />
+                    @Html.AntiForgeryToken()
+                }
+            }
+            else
+            {
+                <div>
+                    @Html.ActionLink(WebResources.Register, "Register", "Account")
+                    @Html.ActionLink(WebResources.Login, "Login", "Account")
+                </div>
+            }
+        </div>
     </div>
     <div id="Content">
         @RenderBody()

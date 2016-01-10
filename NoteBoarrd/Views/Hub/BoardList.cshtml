@@ -1,0 +1,25 @@
+﻿@model ICollection<NoteBoarrd.Models.BoardListElement>
+<div id="BoardList">
+    <ul>
+        @foreach (NoteBoarrd.Models.BoardListElement element in Model)
+        {
+            <li>
+                @if (element.IsPasswordProtected) { <div>Pass</div> }
+                <div>
+                    @Html.ActionLink(
+                         linkText: element.Name
+                         , actionName: "Index"
+                         , controllerName: "Board"
+                         , routeValues: new { id = element.Id }
+                         , htmlAttributes: new { id = "Board_" + element.Id })
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+@*<div id="NewBoardForm">
+    @using (Html.BeginForm("CreateBoard", "Hub", FormMethod.Post))
+    {
+        
+    }
+</div>*@
