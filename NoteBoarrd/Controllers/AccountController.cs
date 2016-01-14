@@ -24,6 +24,10 @@ namespace NoteBoarrd.Controllers
         [HttpGet]
         public ActionResult Login(LoginModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "User");
+            }
             return View();
         }
 
@@ -32,6 +36,10 @@ namespace NoteBoarrd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model, string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "User");
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -61,6 +69,10 @@ namespace NoteBoarrd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "User");
+            }
             //return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
             return new ChallengeResult(provider, "http://www.noteboarrd.com:49812/Account/ExternalLoginCallback");
         }
@@ -95,6 +107,10 @@ namespace NoteBoarrd.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "User");
+            }
             return View();
         }
 
@@ -103,6 +119,10 @@ namespace NoteBoarrd.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "User");
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -129,7 +149,6 @@ namespace NoteBoarrd.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
         public ActionResult Language(string name)
         {
             CultureSetAttribute.SavePreferredCulture(HttpContext.Response, name);

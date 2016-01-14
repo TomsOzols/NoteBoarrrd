@@ -8,15 +8,20 @@ namespace NoteBoarrd.Queries
 {
     public static class HubQueries
     {
-        public static ICollection<BoardListElement> GetAllPublicBoards()
+        public static IEnumerable<BoardModel> GetAllPublicBoards()
         {
-            ICollection<BoardListElement> publicBoards;
+            IEnumerable<BoardModel> publicBoards;
             using (var db = new ApplicationDbContext())
             {
                 var query = db.Boards
-                    .Where(x => x.Rights.Private == false)
-                    .Select(q => new BoardListElement{ Id = q.Id, Name = q.Name, IsPasswordProtected = q.IsPasswordProtected});
-                publicBoards = query.ToList();
+                    .Where(x => x.IsPrivate == false)
+                    .Select(q => new
+                    {
+                        Id = q.Id,
+                        Name = q.Name,
+                        IsPasswordProtected = q.IsPasswordProtected
+                    });                       //!! This is all breaking apart
+                publicBoards = query.ToList().Select(x => new BoardModel { Id = x.Id, Name = x.Name, IsPasswordProtected = x.IsPasswordProtected });
             }
 
             return publicBoards;

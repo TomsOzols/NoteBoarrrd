@@ -12,9 +12,10 @@ namespace NoteBoarrd
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<BoardModel> Boards { get; set; }
+        public DbSet<UserBoards> UserBoards { get; set; }
+        public DbSet<UserPreferences> UserPreferences { get; set; }
         public DbSet<NoteModel> Notes { get; set; }
         public DbSet<CommentModel> Comments { get; set; }
-        public DbSet<BoardRights> BoardRights { get; set; }
 
         public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false) { }
 

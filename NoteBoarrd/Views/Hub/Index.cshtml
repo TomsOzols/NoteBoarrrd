@@ -1,0 +1,29 @@
+﻿@using Resources.Res
+@model NoteBoarrd.Models.BoardListModel
+<div id="BoardList">
+    <ul>
+        @if (Model.BoardList.Count() == 0)
+        {
+            <li>@WebResources.NoBoardsFound</li>
+        }
+        else
+        {
+            foreach (NoteBoarrd.Models.BoardModel element in Model.BoardList)
+            {
+                <li id="BoardListElement">
+                    @if (element.IsPasswordProtected)
+                    { <div>Pass</div> }
+                    <div>
+                        @Html.ActionLink(
+                         linkText: element.Name
+                         , actionName: "Index"
+                         , controllerName: "Board"
+                         , routeValues: new { id = element.Id }
+                         , htmlAttributes: new { id = "Board_" + element.Id })
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>
+@Html.Partial("_CreateBoard", Model.NewBoardModel)

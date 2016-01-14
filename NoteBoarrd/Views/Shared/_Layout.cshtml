@@ -6,20 +6,32 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@WebResources.Title</title>
+    @System.Web.Optimization.Styles.Render("~/Content/Layout")
 </head>
 <body>
-    @System.Web.Optimization.Styles.Render("~/Content/Layout")
     <div id="Navbar">
-        <div>
-            @using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id = "Language" }))
+        <div id="NavigateHome" class="col-md-1">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Home", "Index", "User")
+            }
+            else
+            {
+                @Html.ActionLink("Home", "Index", "Home")
+            }
+        </div>
+        <div class="col-md-1">
+            @Html.ActionLink(WebResources.Latvian, "Language", "Account", routeValues: new { name = "lv-LV" }, htmlAttributes: new { @class = "LanguageSelection" })
+            @Html.ActionLink(WebResources.English, "Language", "Account", routeValues: new { name = "en-US" }, htmlAttributes: new { @class = "LanguageSelection" })
+            @*@using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id = "Language" }))
             {
 
                 @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
                 @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
                 <input type="submit" value="@WebResources.ChangeLanguage" />
-            }
+            }*@
         </div>
-        <div>
+        <div class="col-md-1">
             @if (User.Identity.IsAuthenticated)
             {
                 using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))

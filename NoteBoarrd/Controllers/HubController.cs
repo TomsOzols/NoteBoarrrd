@@ -13,20 +13,17 @@ namespace NoteBoarrd.Controllers
     [Authorize]
     public class HubController : Controller
     {
-        // GET: Hub
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult BoardList()
-        {
             //!!Add Signal-R updates for everyone
-            ICollection<BoardListElement> boards = HubQueries.GetAllPublicBoards();
+            BoardListModel boards = new BoardListModel();
+            boards.BoardList = HubQueries.GetAllPublicBoards();
+            boards.NewBoardModel = new BoardModel();
 
             return View(boards);
         }
 
+        [HttpPost]
         public ActionResult CreateBoard(BoardModel newBoard)
         {
             DateTime current = DateTime.Now;
@@ -41,11 +38,9 @@ namespace NoteBoarrd.Controllers
             {
                 newBoard.IsPasswordProtected = false;
             }
-            newBoard.Rights = new BoardRights();
+            int? newBoardId = HubQueries.AddBoard(newBoard);
 
-            int newBoardId = HubQueries.AddBoard(newBoard);
-
-            return View("Index", "Board", newBoardId);
+            return RedirectToAction("Index", "Board", new { id = newBoardId });
         }
     }
 }

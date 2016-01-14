@@ -151,4 +151,13 @@
     <value>NoteBoard</value>
     <comment>Propably shouldn't change among resource files</comment>
   </data>
+  <data name="NoBoardsFound" xml:space="preserve">
+    <value>There are no boards that you can see</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
 </root>

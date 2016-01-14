@@ -11,6 +11,9 @@ namespace NoteBoarrd.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual ICollection<UserBoards> UserBoards { get; set; }
+        public virtual UserPreferences Preferences { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

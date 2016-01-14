@@ -1,7 +1,37 @@
-﻿
+﻿@model NoteBoarrd.Models.BoardModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Name;
 }
+@using Resources.Res
+@System.Web.Optimization.Scripts.Render("~/bundles/board")
+<div>
+    <div class="col-md-2">
+        <div class="row">
+            <h3>@Model.Name</h3>
+        </div>
+        <div id="GridSelection" class="row">
+            <button>
+                @WebResources.Tools
+            </button>
+            <button>
+                @WebResources.Settings
+            </button>
+        </div>
+        <div id="ToolSelection" class="row">
 
-<h2>Index</h2>
+        </div>
+        <div id="BoardSettings" class="row hidden">
+            
+        </div>
+    </div>
+    <div id="Board" class="col-md-8">
+        <script type="text/javascript">
+            var notes = @Model.Notes;
+        </script>
+        This is where the notes sit
+    </div>
+    <div id="Chat" class="col-md-2">
+        This is where the chat is
+    </div>
+</div>
 

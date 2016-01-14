@@ -1,0 +1,19 @@
+﻿@model NoteBoarrd.Models.BoardModel
+<div id="NewBoardForm">
+    @using (Html.BeginForm("CreateBoard", "Hub", FormMethod.Post))
+    {
+        <div>
+            @Html.LabelFor(x => x.Name)
+            @Html.TextAreaFor(x => x.Name)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.IsPrivate)
+            @Html.CheckBoxFor(x => x.IsPrivate)
+        </div>
+        <input type="submit" />
+    }
+</div>

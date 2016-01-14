@@ -12,7 +12,7 @@ namespace NoteBoarrd.Controllers
     public class BoardController : Controller
     {
         // GET: Board
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id)       //!!Should be nullable?
         {
             if (id == null)
             {
