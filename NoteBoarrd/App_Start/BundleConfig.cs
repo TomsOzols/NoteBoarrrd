@@ -13,7 +13,13 @@ namespace NoteBoarrd
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                     "~/Scripts/jquery-{version}.js",
+                    "~/Scripts/jquery-ui-{version}.js",
                     "~/Scripts/bootstrap.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/signal-r").Include(
+                    "~/Scripts/jquery.signalR-2.2.0.js",
+                    "~/Scripts/BoardScripts.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/Layout").Include(

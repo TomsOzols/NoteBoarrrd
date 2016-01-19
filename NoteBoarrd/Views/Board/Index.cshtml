@@ -3,7 +3,8 @@
     ViewBag.Title = Model.Name;
 }
 @using Resources.Res
-@System.Web.Optimization.Scripts.Render("~/bundles/board")
+@System.Web.Optimization.Scripts.Render("~/bundles/signal-r")
+<script src="/signalr/hubs"></script>
 <div>
     <div class="col-md-2">
         <div class="row">
@@ -25,11 +26,16 @@
         </div>
     </div>
     <div id="Board" class="col-md-8">
+        <input id="BoardId" type="hidden" value="@Model.Id" />
         <script type="text/javascript">
+            var getNotes = '@Url.Action("GetNotes", "Board")'
+        </script>
+        @*<script type="text/javascript">
             if (@Model.Notes != null){
                 var notes = @Model.Notes;
             }
-        </script>
+        </script>*@
+        <div id="Shape" style="left:10px; top:10px; width:50px; height:50px; background-color:red;"></div>
         This is where the notes sit
     </div>
     <div id="Chat" class="col-md-2">

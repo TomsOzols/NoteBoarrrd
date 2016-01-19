@@ -25,3 +25,7 @@
     #Content a{
         color:black;
     }
+
+#Board{
+    height:100vh;
+}

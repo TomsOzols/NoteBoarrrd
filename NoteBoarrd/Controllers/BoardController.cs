@@ -5,10 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using NoteBoarrd.Models;
 using NoteBoarrd.Queries;
+using Microsoft.AspNet.SignalR;
 
 namespace NoteBoarrd.Controllers
 {
-    [Authorize]
+
+    public class BoardHub : Hub
+    {
+        public void MoveNote(NoteModel note)
+        {
+            int noteMoved = 1;
+        }
+    }
+
+    [System.Web.Mvc.Authorize]
     public class BoardController : Controller
     {
         public ActionResult Index(int? id)
@@ -24,6 +34,13 @@ namespace NoteBoarrd.Controllers
                 return RedirectToAction("Index", "Hub");
             }
             return View(currentBoard);
+        }
+
+        [HttpGet]
+        public JsonResult GetNotes(int? id)
+        {
+            ICollection<NoteModel> notes = BoardQueries.GetBoardNotes((int)id);
+            return Json(notes, JsonRequestBehavior.AllowGet);
         }
     }
 }

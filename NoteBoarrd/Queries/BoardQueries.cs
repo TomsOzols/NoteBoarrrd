@@ -14,13 +14,24 @@ namespace NoteBoarrd.Queries
             BoardModel currentBoard = null;
             using (var db = new ApplicationDbContext())
             {
-                var query = db.Boards.Include("Notes").Where(x => x.Id == id);      //A rather bad fix, this should've gone into js as an ajax get request.
+                var query = db.Boards.Include("Notes").Where(x => x.Id == id);      //A rather bad fix, this should've gone into js as an ajax get request. (AND IT HAS - REMOVE THIS)
                 currentBoard = query.FirstOrDefault();
 
             }
 
             return currentBoard;
         }
-       
+        
+        public static ICollection<NoteModel> GetBoardNotes(int id)
+        {
+            ICollection<NoteModel> notes = null;
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Notes.Where(x => x.BoardId == id);
+                notes = query.ToList();
+            }
+
+            return notes;
+        }
     }
 }
