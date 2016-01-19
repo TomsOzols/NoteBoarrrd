@@ -53,7 +53,15 @@ namespace NoteBoarrd.Attributes
 
         private static void SetCultureOnThread(String language)
         {
-            var cultureInfo = CultureInfo.CreateSpecificCulture(language);
+            CultureInfo cultureInfo;
+            try
+            {
+                cultureInfo = CultureInfo.CreateSpecificCulture(language);
+            }
+            catch
+            {
+                cultureInfo = CultureInfo.CreateSpecificCulture("en-US");
+            }
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }

@@ -1,0 +1,11 @@
+﻿@model NoteBoarrd.Models.PreferencesModel
+@using Resources.Res
+<h2>@WebResources.Preferences</h2>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(x => x.CultureIdentifier)
+        @Html.DropDownListFor(x => x.CultureIdentifier, Model.Culture)
+    </div>
+    <input type="submit" />
+}

@@ -16,6 +16,7 @@ namespace NoteBoarrd
         public DbSet<UserBoards> UserBoards { get; set; }
         public DbSet<NoteModel> Notes { get; set; }
         public DbSet<CommentModel> Comments { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
 
         public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false) { }
 

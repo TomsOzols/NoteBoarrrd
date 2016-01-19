@@ -11,11 +11,8 @@ namespace NoteBoarrd.Queries
     {
         public static void ChangeLanguagePreference(string currentUser, string language)
         {
-            ApplicationUser user = new ApplicationUser()
-            {
-                UserName = currentUser,
-                PreferredCulture = language
-            };
+            ApplicationUser user = GetCurrentUser(currentUser);
+            user.PreferredCulture = language;
             using (var db = new ApplicationDbContext())
             {
                 db.Users.Attach(user);
@@ -59,6 +56,16 @@ namespace NoteBoarrd.Queries
                 var query = db.Users.Where(x => x.Id == user.Id).Select(x => x.MyBoards);
                 var boards = query.FirstOrDefault();
                 return boards;
+            }
+        }
+
+        public static ICollection<Culture> GetCultures()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Cultures;
+                ICollection<Culture> cultures = query.ToList();
+                return cultures;
             }
         }
     }

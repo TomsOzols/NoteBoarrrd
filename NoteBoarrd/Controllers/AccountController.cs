@@ -50,6 +50,8 @@ namespace NoteBoarrd.Controllers
             {
                 case SignInStatus.Success:
                     {
+                        ApplicationUser user = AccountQueries.GetCurrentUser(model.Email);
+                        CultureSetAttribute.SavePreferredCulture(HttpContext.Response, user.PreferredCulture);
                         if (Url.IsLocalUrl(returnUrl))
                         {
                             return Redirect(returnUrl);

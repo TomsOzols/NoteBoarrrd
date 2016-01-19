@@ -241,6 +241,15 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account settings.
+        /// </summary>
+        public static string Preferences {
+            get {
+                return ResourceManager.GetString("Preferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {

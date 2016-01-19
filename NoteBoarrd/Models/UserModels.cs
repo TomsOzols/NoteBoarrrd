@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace NoteBoarrd.Models
 {
@@ -9,6 +10,41 @@ namespace NoteBoarrd.Models
     {
         public ICollection<BoardModel> VisitedBoards { get; set; }
         public ICollection<BoardModel> MyBoards { get; set; }
+    }
+
+    public class Culture
+    {
+        public int Id { get; set; }
+        public string CultureTag { get; set; }
+    }
+
+    public class PreferencesModel
+    {
+        public List<Culture> cultures;
+
+        public PreferencesModel()
+        {
+            cultures = new List<Culture>();
+            cultures.Add(new Models.Culture
+            {
+                Id = 1,
+                CultureTag = "lv-LV"
+            });
+            cultures.Add(new Culture
+            {
+                Id = 2,
+                CultureTag = "en-US"
+            });
+        }
+
+        public int CultureIdentifier { get; set; }
+        public IEnumerable<SelectListItem> Culture
+        {
+            get
+            {
+                return new SelectList(cultures, "Id", "CultureTag");
+            }
+        }
     }
 
     public class UserModel

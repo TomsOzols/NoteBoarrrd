@@ -202,4 +202,7 @@
   <data name="MyBoardsList" xml:space="preserve">
     <value>My boards</value>
   </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Account settings</value>
+  </data>
 </root>

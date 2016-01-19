@@ -295,6 +295,7 @@
     <Content Include="Views\Hub\Index.cshtml" />
     <Content Include="Views\Board\Index.cshtml" />
     <Content Include="Views\Hub\CreateBoard.cshtml" />
+    <Content Include="Views\Home\UserPreferences.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

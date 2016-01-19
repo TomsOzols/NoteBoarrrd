@@ -18,6 +18,7 @@
             <div>@User.Identity.Name</div>
             @Html.ActionLink(WebResources.Hub, "Index", "Hub")
             @Html.ActionLink(WebResources.Home, "Index", "Home")
+            @Html.ActionLink(WebResources.Preferences, "UserPreferences", "Home")
         }
         else
         {
@@ -36,8 +37,8 @@
                 {
                     using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
                     {
-                            <input type="submit" value="@WebResources.LogOut" />
-                            @Html.AntiForgeryToken()
+                        <input type="submit" value="@WebResources.LogOut" />
+                        @Html.AntiForgeryToken()
                     }
                 }
             </div>

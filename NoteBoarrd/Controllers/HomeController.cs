@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NoteBoarrd.Models;
+using NoteBoarrd.Attributes;
 
 namespace NoteBoarrd.Controllers
 {
@@ -21,12 +22,30 @@ namespace NoteBoarrd.Controllers
             return View(model);
         }
 
-        public ActionResult UpdatePreferences()
+        [HttpGet]
+        public ActionResult UserPreferences()
         {
-            //string userName = User.Identity.Name;
-            //AccountQueries.ChangeLanguagePreference(userName, culture);
+            ApplicationUser user = AccountQueries.GetCurrentUser(User.Identity.Name);
+            PreferencesModel preferences = new PreferencesModel()
+            {
+                cultures = AccountQueries.GetCultures().ToList()
+            };
 
-            return RedirectToAction("Index");       //Make this return to the view where user preferences are.
+            return View(preferences);
+        }
+
+        [HttpPost]
+        public ActionResult UserPreferences(PreferencesModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string userName = User.Identity.Name;
+                string prefferedCulture = model.cultures.Where(x => x.Id == model.CultureIdentifier).Select(x => x.CultureTag).SingleOrDefault();
+                AccountQueries.ChangeLanguagePreference(userName, prefferedCulture);
+                CultureSetAttribute.SavePreferredCulture(HttpContext.Response, prefferedCulture);
+            }
+
+            return View(model);
         }
     }
 }
