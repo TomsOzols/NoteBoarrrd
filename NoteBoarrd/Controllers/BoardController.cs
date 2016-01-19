@@ -6,15 +6,21 @@ using System.Web.Mvc;
 using NoteBoarrd.Models;
 using NoteBoarrd.Queries;
 using Microsoft.AspNet.SignalR;
+using System.Threading.Tasks;
 
 namespace NoteBoarrd.Controllers
 {
 
     public class BoardHub : Hub
     {
-        public void MoveNote(NoteModel note)
+        public async Task JoinBoard(int boardId)
         {
-            int noteMoved = 1;
+            await Groups.Add(Context.ConnectionId, boardId.ToString());
+        }
+
+        public void MoveNote(NoteModel note, int boardId)
+        {
+            Clients.OthersInGroup(boardId.ToString()).moveClientNote(note);
         }
     }
 
@@ -33,6 +39,8 @@ namespace NoteBoarrd.Controllers
             {
                 return RedirectToAction("Index", "Hub");
             }
+
+            BoardQueries.UpdateBoardVisit((int)id, User.Identity.Name);
             return View(currentBoard);
         }
 

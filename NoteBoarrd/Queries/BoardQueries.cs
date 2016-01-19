@@ -33,5 +33,40 @@ namespace NoteBoarrd.Queries
 
             return notes;
         }
+
+        public static void UpdateBoardVisit(int id, string userName)
+        {
+            ApplicationUser user = AccountQueries.GetCurrentUser(userName);
+            //UserBoards entryUpdate = new UserBoards()
+            //{
+            //    BoardId = id,
+            //    UserId = user.Id,
+            //    LastVisited = DateTime.Now
+            //};
+            using (var db = new ApplicationDbContext())
+            {
+                var entry = db.UserBoards.Where(x => x.BoardId == id && x.UserId == user.Id).SingleOrDefault();
+                if (entry != null)
+                {
+                    entry.LastVisited = DateTime.Now;
+                    db.Entry(entry).Property(e => e.LastVisited).IsModified = true;
+                    //db.UserBoards.Attach(entryUpdate);
+                    //var current = db.Entry(entryUpdate);
+                    //current.Property(e => e.LastVisited).IsModified = true;
+                }
+                else
+                {
+                    UserBoards entryUpdate = new UserBoards()
+                    {
+                        BoardId = id,
+                        UserId = user.Id,
+                        LastVisited = DateTime.Now
+                    };
+                    db.UserBoards.Add(entryUpdate);
+                }
+
+                db.SaveChanges();
+            }
+        }
     }
 }

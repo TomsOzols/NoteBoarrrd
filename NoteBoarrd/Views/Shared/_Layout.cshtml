@@ -15,6 +15,7 @@
         <div id="navigation" class="col-md-10">
         @if (authenticated)
         {
+            <div>@User.Identity.Name</div>
             @Html.ActionLink(WebResources.Hub, "Index", "Hub")
             @Html.ActionLink(WebResources.Home, "Index", "Home")
         }

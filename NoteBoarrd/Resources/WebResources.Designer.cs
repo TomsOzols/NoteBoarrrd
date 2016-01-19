@@ -160,6 +160,15 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recently visited.
+        /// </summary>
+        public static string LatestBoardsVisited {
+            get {
+                return ResourceManager.GetString("LatestBoardsVisited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Latviešu.
         /// </summary>
         public static string Latvian {
@@ -183,6 +192,15 @@ namespace Resources.Res {
         public static string LogOut {
             get {
                 return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My boards.
+        /// </summary>
+        public static string MyBoardsList {
+            get {
+                return ResourceManager.GetString("MyBoardsList", resourceCulture);
             }
         }
         

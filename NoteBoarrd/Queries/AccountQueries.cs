@@ -39,5 +39,27 @@ namespace NoteBoarrd.Queries
             }
             return user;
         }
+
+        public static ICollection<BoardModel> GetLastVisitedBoards(string userName)
+        {
+            ApplicationUser user = GetCurrentUser(userName);
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.UserBoards.Where(x => x.UserId == user.Id).OrderByDescending(x => x.LastVisited).Take(10).Select(x => x.Board).AsEnumerable();
+                ICollection<BoardModel> boards = query.ToList();
+                return boards;
+            }
+        }
+
+        public static ICollection<BoardModel> GetMyBoards(string userName)
+        {
+            ApplicationUser user = GetCurrentUser(userName);
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Users.Where(x => x.Id == user.Id).Select(x => x.MyBoards);
+                var boards = query.FirstOrDefault();
+                return boards;
+            }
+        }
     }
 }

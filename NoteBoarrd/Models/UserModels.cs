@@ -5,6 +5,12 @@ using System.Web;
 
 namespace NoteBoarrd.Models
 {
+    public class UserPageViewModel
+    {
+        public ICollection<BoardModel> VisitedBoards { get; set; }
+        public ICollection<BoardModel> MyBoards { get; set; }
+    }
+
     public class UserModel
     {
         public UserBoards Boards { get; set; }          //!!Check this later - it might need to be a boardmodel collection or such

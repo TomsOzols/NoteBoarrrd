@@ -196,4 +196,10 @@
   <data name="RepeatPassWrong" xml:space="preserve">
     <value>The passwords do not match</value>
   </data>
+  <data name="LatestBoardsVisited" xml:space="preserve">
+    <value>Recently visited</value>
+  </data>
+  <data name="MyBoardsList" xml:space="preserve">
+    <value>My boards</value>
+  </data>
 </root>
