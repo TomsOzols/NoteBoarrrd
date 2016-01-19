@@ -160,4 +160,40 @@
   <data name="Tools" xml:space="preserve">
     <value>Tools</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Hub" xml:space="preserve">
+    <value>Hub</value>
+  </data>
+  <data name="UserPage" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="BoardLengthTooLow" xml:space="preserve">
+    <value>The {0} must be at least {2} characters long</value>
+  </data>
+  <data name="BoardName" xml:space="preserve">
+    <value>Board name</value>
+  </data>
+  <data name="BoardNameRequired" xml:space="preserve">
+    <value>Please name your board</value>
+  </data>
+  <data name="CreateNewBoard" xml:space="preserve">
+    <value>New board</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Please provide an email</value>
+  </data>
+  <data name="IsBoardPrivate" xml:space="preserve">
+    <value>Private board</value>
+  </data>
+  <data name="PassRequired" xml:space="preserve">
+    <value>A password is required</value>
+  </data>
+  <data name="RepeatPassRequired" xml:space="preserve">
+    <value>Please repeat your password</value>
+  </data>
+  <data name="RepeatPassWrong" xml:space="preserve">
+    <value>The passwords do not match</value>
+  </data>
 </root>

@@ -10,12 +10,6 @@ namespace NoteBoarrd.Models
         public UserBoards Boards { get; set; }          //!!Check this later - it might need to be a boardmodel collection or such
     }
 
-    public class UserPreferences
-    {
-        public int Id { get; set; }         //!! Update this s***
-        public string PreferredLanguage { get; set; }
-    }
-
     public class UserBoards
     {
         public int Id { get; set; }

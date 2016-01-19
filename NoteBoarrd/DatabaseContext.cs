@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NoteBoarrd.Models;
 using System.Data.Entity;
+using NoteBoarrd.EntityMappings;
 
 namespace NoteBoarrd
 {
@@ -13,7 +14,6 @@ namespace NoteBoarrd
     {
         public DbSet<BoardModel> Boards { get; set; }
         public DbSet<UserBoards> UserBoards { get; set; }
-        public DbSet<UserPreferences> UserPreferences { get; set; }
         public DbSet<NoteModel> Notes { get; set; }
         public DbSet<CommentModel> Comments { get; set; }
 
@@ -22,6 +22,16 @@ namespace NoteBoarrd
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new BoardModelConfiguration());
+            modelBuilder.Configurations.Add(new UserBoardsConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new NoteModelConfiguration());
+            modelBuilder.Configurations.Add(new CommentModelConfiguration());
         }
     }
 }

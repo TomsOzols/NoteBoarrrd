@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NoteBoarrd.Models
 {
     /// <summary>
-    /// Not sure if i'll even use this enumerator.
+    /// Not sure if i'll even use this enum.
     /// </summary>
     public enum NoteType
     {
@@ -29,5 +29,9 @@ namespace NoteBoarrd.Models
         public float XCoord { get; set; }
 
         public float YCoord { get; set; }
+
+        public int BoardId { get; set; }
+
+        public BoardModel Board { get; set; }
     }
 }

@@ -11,8 +11,7 @@ namespace NoteBoarrd.Controllers
     [Authorize]
     public class BoardController : Controller
     {
-        // GET: Board
-        public ActionResult Index(int? id)       //!!Should be nullable?
+        public ActionResult Index(int? id)
         {
             if (id == null)
             {

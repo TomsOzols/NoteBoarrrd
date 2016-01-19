@@ -11,8 +11,14 @@ namespace NoteBoarrd.Models
 
         public string Text { get; set; }
 
-        public string Owner { get; set; }
-
         public DateTime Created { get; set; }
+
+        public string CreatedBy_Id { get; set; }
+
+        public int NoteId { get; set; }
+
+        public virtual ApplicationUser CreatedBy { get; set; }
+
+        public virtual NoteModel Note { get; set; }
     }
 }

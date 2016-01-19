@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NoteBoarrd.Models;
+using NoteBoarrd.Queries;
+using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace NoteBoarrd.Queries
 {
@@ -19,29 +22,34 @@ namespace NoteBoarrd.Queries
                     {
                         Id = q.Id,
                         Name = q.Name,
-                        IsPasswordProtected = q.IsPasswordProtected
-                    });                       //!! This is all breaking apart
+                        IsPasswordProtected = q.Password != null ? true : false
+                    });
                 publicBoards = query.ToList().Select(x => new BoardModel { Id = x.Id, Name = x.Name, IsPasswordProtected = x.IsPasswordProtected });
             }
 
             return publicBoards;
         }
 
-        public static int AddBoard(BoardModel board)
+        public static int? AddBoard(BoardModel board, string userName)
         {
+            board.CreatedBy = AccountQueries.GetCurrentUser(userName);
+            //board.CreatedBy_Id = board.CreatedBy.Id;
+            board.Notes = new Collection<NoteModel>();
+            board.UserBoards = new Collection<UserBoards>();
             int newBoardIdentifier;
             using (var db = new ApplicationDbContext())
             {
-                try
-                {
+                //try
+                //{
+                db.Entry(board.CreatedBy).State = EntityState.Unchanged;
                     db.Boards.Add(board);
                     db.SaveChanges();
                     newBoardIdentifier = board.Id;
-                }
-                catch
-                {
-                    return -1;              //!!Yay, lazy magic numbers
-                }
+                //}
+                //catch
+                //{
+                //    return null;                //!!Wow, this catch actually works
+                //}
             }
 
             return newBoardIdentifier;

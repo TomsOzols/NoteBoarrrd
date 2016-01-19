@@ -201,10 +201,17 @@
     <Compile Include="Attributes\CultureSetAttribute.cs" />
     <Compile Include="Controllers\BoardController.cs" />
     <Compile Include="Controllers\HubController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="EntityMappings\RolesConfiguration.cs" />
+    <Compile Include="EntityMappings\UserClaimsConfiguration.cs" />
+    <Compile Include="EntityMappings\UserLoginsConfiguration.cs" />
+    <Compile Include="EntityMappings\UserRolesConfiguration.cs" />
+    <Compile Include="EntityMappings\UsersConfiguration.cs" />
+    <Compile Include="EntityMappings\BoardModelsConfiguration.cs" />
+    <Compile Include="EntityMappings\CommentModelsConfiguration.cs" />
+    <Compile Include="EntityMappings\NoteModelsConfiguration.cs" />
     <Compile Include="EntityMappings\UserBoardsConfiguration.cs" />
-    <Compile Include="EntityMappings\UserConfiguration.cs" />
     <Compile Include="Migrations\201601091226564_InitialCreate.cs" />
     <Compile Include="Migrations\201601091226564_InitialCreate.Designer.cs">
       <DependentUpon>201601091226564_InitialCreate.cs</DependentUpon>
@@ -232,7 +239,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,10 +257,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\ExternalLogin.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Hub\Index.cshtml" />
     <Content Include="Views\Board\Index.cshtml" />
-    <Content Include="Views\Hub\_CreateBoard.cshtml" />
+    <Content Include="Views\Hub\CreateBoard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

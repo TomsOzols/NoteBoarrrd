@@ -5,14 +5,21 @@
         <div>
             @Html.LabelFor(x => x.Name)
             @Html.TextAreaFor(x => x.Name)
+            @Html.ValidationMessageFor(x => x.Name)
         </div>
         <div>
             @Html.LabelFor(x => x.Password)
             @Html.PasswordFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
         </div>
         <div>
             @Html.LabelFor(x => x.IsPrivate)
             @Html.CheckBoxFor(x => x.IsPrivate)
+            @Html.ValidationMessageFor(x => x.IsPrivate)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.IsPasswordProtected)
+            @Html.CheckBoxFor(x => x.IsPasswordProtected)
         </div>
         <input type="submit" />
     }

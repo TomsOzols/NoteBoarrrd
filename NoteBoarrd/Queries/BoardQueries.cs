@@ -14,7 +14,9 @@ namespace NoteBoarrd.Queries
             BoardModel currentBoard = null;
             using (var db = new ApplicationDbContext())
             {
-                currentBoard = db.Boards.Where(x => x.Id == id).FirstOrDefault();
+                var query = db.Boards.Include("Notes").Where(x => x.Id == id);      //A rather bad fix, this should've gone into js as an ajax get request.
+                currentBoard = query.FirstOrDefault();
+
             }
 
             return currentBoard;

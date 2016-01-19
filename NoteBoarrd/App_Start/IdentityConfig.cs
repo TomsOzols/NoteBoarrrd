@@ -35,7 +35,7 @@ namespace NoteBoarrd
                 RequireNonLetterOrDigit = false
             };
 
-            ////User Lockout - Currently disabled since the dev is stupid and tends to forgot his password quite a lot
+            ////User Lockout - Currently disabled since the dev is stupid and tends to forget his password quite a lot
             manager.UserLockoutEnabledByDefault = false;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(10);
             manager.MaxFailedAccessAttemptsBeforeLockout = 3;

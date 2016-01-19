@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Threading.Tasks;
+using NoteBoarrd.Queries;
 
 namespace NoteBoarrd.Controllers
 {
@@ -26,7 +27,7 @@ namespace NoteBoarrd.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -38,7 +39,7 @@ namespace NoteBoarrd.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Home");
             }
             if (!ModelState.IsValid)
             {
@@ -64,6 +65,12 @@ namespace NoteBoarrd.Controllers
             }
         }
 
+        /// <summary>
+        /// This Aint working! Should be the external login.
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,7 +78,7 @@ namespace NoteBoarrd.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Home");
             }
             //return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
             return new ChallengeResult(provider, "http://www.noteboarrd.com:49812/Account/ExternalLoginCallback");
@@ -109,7 +116,7 @@ namespace NoteBoarrd.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -121,7 +128,7 @@ namespace NoteBoarrd.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Home");
             }
             if (ModelState.IsValid)
             {
@@ -149,12 +156,15 @@ namespace NoteBoarrd.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Language(string name)
+        public ActionResult Language(string culture)
         {
-            CultureSetAttribute.SavePreferredCulture(HttpContext.Response, name);
-            return RedirectToAction("Login");
+            CultureSetAttribute.SavePreferredCulture(HttpContext.Response, culture);
+            return Redirect(Request.UrlReferrer.LocalPath);
         }
 
+        /// <summary>
+        /// Properties
+        /// </summary>
         public ApplicationSignInManager SignInManager
         {
             get

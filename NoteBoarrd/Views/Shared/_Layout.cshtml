@@ -1,6 +1,4 @@
 ﻿@using Resources.Res;
-@using System.Threading
-@using System.Globalization
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,44 +7,38 @@
     @System.Web.Optimization.Styles.Render("~/Content/Layout")
 </head>
 <body>
-    <div id="Navbar">
-        <div id="NavigateHome" class="col-md-1">
-            @if (User.Identity.IsAuthenticated)
-            {
-                @Html.ActionLink("Home", "Index", "User")
-            }
-            else
-            {
-                @Html.ActionLink("Home", "Index", "Home")
-            }
+    <div id="Navbar" class="row">
+        @{ 
+            bool authenticated = User.Identity.IsAuthenticated;
+        }
+        <div id="navigation" class="col-md-10">
+        @if (authenticated)
+        {
+            @Html.ActionLink(WebResources.Hub, "Index", "Hub")
+            @Html.ActionLink(WebResources.Home, "Index", "Home")
+        }
+        else
+        {
+            @Html.ActionLink(WebResources.Register, "Register", "Account")
+            @Html.ActionLink(WebResources.Login, "Login", "Account")
+        }
         </div>
-        <div class="col-md-1">
-            @Html.ActionLink(WebResources.Latvian, "Language", "Account", routeValues: new { name = "lv-LV" }, htmlAttributes: new { @class = "LanguageSelection" })
-            @Html.ActionLink(WebResources.English, "Language", "Account", routeValues: new { name = "en-US" }, htmlAttributes: new { @class = "LanguageSelection" })
-            @*@using (Html.BeginForm("Language", "Account", FormMethod.Post, new { id = "Language" }))
-            {
 
-                @Html.RadioButton("name", "lv-LV", isChecked: false) @Html.Label(WebResources.Latvian)
-                @Html.RadioButton("name", "en-US", isChecked: true) @Html.Label(WebResources.English)
-                <input type="submit" value="@WebResources.ChangeLanguage" />
-            }*@
-        </div>
-        <div class="col-md-1">
-            @if (User.Identity.IsAuthenticated)
-            {
-                using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
+        <div class="col-md-2">
+            <div class="col-md-9">
+                @Html.ActionLink(WebResources.Latvian, "Language", "Account", routeValues: new { culture = "lv-LV" }, htmlAttributes: new { @class = "LanguageSelection" })
+                @Html.ActionLink(WebResources.English, "Language", "Account", routeValues: new { culture = "en-US" }, htmlAttributes: new { @class = "LanguageSelection" })
+            </div>
+            <div class="col-md-3">
+                @if (authenticated)
                 {
-                    <input type="submit" value="@WebResources.LogOut" />
-                    @Html.AntiForgeryToken()
+                    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "Logout" }))
+                    {
+                            <input type="submit" value="@WebResources.LogOut" />
+                            @Html.AntiForgeryToken()
+                    }
                 }
-            }
-            else
-            {
-                <div>
-                    @Html.ActionLink(WebResources.Register, "Register", "Account")
-                    @Html.ActionLink(WebResources.Login, "Login", "Account")
-                </div>
-            }
+            </div>
         </div>
     </div>
     <div id="Content">

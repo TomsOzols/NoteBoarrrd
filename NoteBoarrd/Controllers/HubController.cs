@@ -13,32 +13,58 @@ namespace NoteBoarrd.Controllers
     [Authorize]
     public class HubController : Controller
     {
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index()     //!!Feeling my bad architecture allready
         {
             //!!Add Signal-R updates for everyone
-            BoardListModel boards = new BoardListModel();
-            boards.BoardList = HubQueries.GetAllPublicBoards();
-            boards.NewBoardModel = new BoardModel();
+            //BoardListModel hub = new BoardListModel();
+            IEnumerable<BoardModel> BoardList = HubQueries.GetAllPublicBoards();
 
-            return View(boards);
+            foreach(BoardModel board in BoardList)          //!!Figure out a better way someday
+            {
+                if (board.Password != null)
+                {
+                    board.IsPasswordProtected = true;
+                }
+            }
+
+            return View(BoardList);
+        }
+
+        [HttpGet]
+        public ActionResult CreateBoard()
+        {
+            return View();
         }
 
         [HttpPost]
-        public ActionResult CreateBoard(BoardModel newBoard)
+        public ActionResult CreateBoard(AddBoardModel board)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(board);
+            }
             DateTime current = DateTime.Now;
-            newBoard.LastChanged = current;
-            newBoard.Created = current;
-            newBoard.Notes = new Collection<NoteModel>();
-            if (newBoard.Password != null)
+            string userName = User.Identity.Name;
+            BoardModel newBoard = new BoardModel()
             {
-                newBoard.IsPasswordProtected = true;
-            }
-            else
-            {
-                newBoard.IsPasswordProtected = false;
-            }
-            int? newBoardId = HubQueries.AddBoard(newBoard);
+                LastChanged = current,
+                Created = current,
+                Notes = new Collection<NoteModel>(),
+                Name = board.Name,
+                Password = board.Password,
+                IsPrivate = board.IsPrivate
+            };
+           
+            //if (newBoard.Password != null)
+            //{
+            //    newBoard.IsPasswordProtected = true;
+            //}
+            //else
+            //{
+            //    newBoard.IsPasswordProtected = false;
+            //}
+            int? newBoardId = HubQueries.AddBoard(newBoard, userName);
 
             return RedirectToAction("Index", "Board", new { id = newBoardId });
         }

@@ -61,11 +61,47 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} must be at least {2} characters long.
+        /// </summary>
+        public static string BoardLengthTooLow {
+            get {
+                return ResourceManager.GetString("BoardLengthTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Board name.
+        /// </summary>
+        public static string BoardName {
+            get {
+                return ResourceManager.GetString("BoardName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please name your board.
+        /// </summary>
+        public static string BoardNameRequired {
+            get {
+                return ResourceManager.GetString("BoardNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Language.
         /// </summary>
         public static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New board.
+        /// </summary>
+        public static string CreateNewBoard {
+            get {
+                return ResourceManager.GetString("CreateNewBoard", resourceCulture);
             }
         }
         
@@ -79,11 +115,47 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide an email.
+        /// </summary>
+        public static string EmailRequired {
+            get {
+                return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hub.
+        /// </summary>
+        public static string Hub {
+            get {
+                return ResourceManager.GetString("Hub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Private board.
+        /// </summary>
+        public static string IsBoardPrivate {
+            get {
+                return ResourceManager.GetString("IsBoardPrivate", resourceCulture);
             }
         }
         
@@ -124,6 +196,15 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A password is required.
+        /// </summary>
+        public static string PassRequired {
+            get {
+                return ResourceManager.GetString("PassRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
@@ -160,6 +241,24 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please repeat your password.
+        /// </summary>
+        public static string RepeatPassRequired {
+            get {
+                return ResourceManager.GetString("RepeatPassRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The passwords do not match.
+        /// </summary>
+        public static string RepeatPassWrong {
+            get {
+                return ResourceManager.GetString("RepeatPassWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -183,6 +282,15 @@ namespace Resources.Res {
         public static string Tools {
             get {
                 return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Account.
+        /// </summary>
+        public static string UserPage {
+            get {
+                return ResourceManager.GetString("UserPage", resourceCulture);
             }
         }
     }
