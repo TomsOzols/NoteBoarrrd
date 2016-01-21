@@ -7,6 +7,7 @@ using NoteBoarrd.Models;
 using NoteBoarrd.Queries;
 using Microsoft.AspNet.SignalR;
 using System.Threading.Tasks;
+using Resources.Res;
 
 namespace NoteBoarrd.Controllers
 {
@@ -18,10 +19,19 @@ namespace NoteBoarrd.Controllers
             await Groups.Add(Context.ConnectionId, boardId.ToString());
         }
 
-        public void MoveNote(NoteModel note, int boardId)
+        public void MoveNote(int boardId, int noteId, float left, float top)
         {
-            Clients.OthersInGroup(boardId.ToString()).moveClientNote(note);
+            bool wasUpdated = BoardQueries.UpdateNoteCoord(noteId, left, top);
+            if (wasUpdated)
+            {
+                Clients.OthersInGroup(boardId.ToString()).moveClientNote(noteId, left, top);
+            }
         }
+
+        //public static void RedirectOtherUsers(int boardId)
+        //{
+        //    Clients.OthersInGroup(boardId.ToString()).redirectClient();
+        //}
     }
 
     [System.Web.Mvc.Authorize]
@@ -49,6 +59,67 @@ namespace NoteBoarrd.Controllers
         {
             ICollection<NoteModel> notes = BoardQueries.GetBoardNotes((int)id);
             return Json(notes, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBoard(int? id)
+        {
+            ApplicationUser user = AccountQueries.GetCurrentUser(User.Identity.Name);
+            bool success = BoardQueries.DeleteBoard(user, (int)id);
+            if (success)
+            {
+                string boardSuccesfullyDeleted = WebResources.BoardDeleteSuccess;
+                return Json(new { success = true, message = boardSuccesfullyDeleted });
+            }
+
+            string boardDeletionFailed = WebResources.BoardDeleteFailure;
+            return Json(new { success = false, message = boardDeletionFailed });
+        }
+
+        //[HttpPost]
+        //public ActionResult PostPictureNote(int? id, byte[] image)
+        //{
+        //    NoteModel note = new NoteModel()
+        //    {
+        //        Type = "Image",
+        //        BoardId = (int)id,
+        //        left = 0,
+        //        top = 0,
+        //        Image = image
+        //    };
+        //    int noteId = BoardQueries.AddNewNote((int)id, note);
+        //    return Json( new { id = noteId });
+        //}
+
+        [HttpPost]
+        public ActionResult PostNote(int? id, string text, string type, byte[] image)
+        {
+            NoteModel note = new NoteModel()
+            {
+                Type = type,
+                BoardId = (int)id,
+                left = 0,
+                top = 0
+            };
+            switch (type)
+            {
+                case "Text":
+                    {
+                        note.Text = text;
+                        break;
+                    }
+                case "Image":
+                    {
+                        note.Image = image;
+                        break;
+                    }
+                default:
+                    {
+                        return Json(new { success = false });
+                    }
+            }
+            int noteId = BoardQueries.AddNewNote((int)id, note);
+            return Json(new { success = true, id = noteId });
         }
     }
 }

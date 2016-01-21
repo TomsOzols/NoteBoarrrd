@@ -123,8 +123,17 @@
   <data name="Email" xml:space="preserve">
     <value>Epasts</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Latvian" xml:space="preserve">
+    <value>Latviešu</value>
+  </data>
   <data name="Login" xml:space="preserve">
-    <value>Pierakstīties</value>
+    <value>Pierakstīšanās</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Atslēgties</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Parole</value>
@@ -136,10 +145,85 @@
     <value>Reģistrēties</value>
   </data>
   <data name="RepeatPass" xml:space="preserve">
-    <value>Atkārtojiet paroli</value>
+    <value>Atkārojiet paroli</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>NoteBoard</value>
     <comment>Propably shouldn't change among resource files</comment>
+  </data>
+  <data name="NoBoardsFound" xml:space="preserve">
+    <value>Netika atrasts neviens pieejams ziņojumu dēlis</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Iestatījumi</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Rīki</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Sākumlapa</value>
+  </data>
+  <data name="Hub" xml:space="preserve">
+    <value>Centrāle</value>
+  </data>
+  <data name="UserPage" xml:space="preserve">
+    <value>Mans konts</value>
+  </data>
+  <data name="BoardLengthTooLow" xml:space="preserve">
+    <value>Ziņojumu dēļa nosaukumam jābūt vismaz {2} simbolus garam</value>
+  </data>
+  <data name="BoardName" xml:space="preserve">
+    <value>Ziņojumu dēļa nosaukums</value>
+  </data>
+  <data name="BoardNameRequired" xml:space="preserve">
+    <value>Lūdzu piešķiriet dēlim nosaukumu</value>
+  </data>
+  <data name="CreateNewBoard" xml:space="preserve">
+    <value>Jauns dēlis</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Lūdzu ievadiet epastu</value>
+  </data>
+  <data name="IsBoardPrivate" xml:space="preserve">
+    <value>Privāts ziņojumu dēlis</value>
+  </data>
+  <data name="PassRequired" xml:space="preserve">
+    <value>Lūdzu ievadiet paroli</value>
+  </data>
+  <data name="RepeatPassRequired" xml:space="preserve">
+    <value>Lūdzu atkārtojiet paroli</value>
+  </data>
+  <data name="RepeatPassWrong" xml:space="preserve">
+    <value>Paroles nesakrīt, lūdzu ievadiet atkārtoti</value>
+  </data>
+  <data name="LatestBoardsVisited" xml:space="preserve">
+    <value>Nesen apmeklētie</value>
+  </data>
+  <data name="MyBoardsList" xml:space="preserve">
+    <value>Mani dēļi</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>Konta iestatījumi</value>
+  </data>
+  <data name="BoardDeleteFailure" xml:space="preserve">
+    <value>Ziņojumu dēļa dzēšana nav izdevusies</value>
+  </data>
+  <data name="BoardDeleteSuccess" xml:space="preserve">
+    <value>Ziņojumu dēlis veiksmīgi izdzēsts</value>
+  </data>
+  <data name="DeleteBoardButton" xml:space="preserve">
+    <value>Dzēst ziņojumu dēli</value>
+  </data>
+  <data name="ImageDropZone" xml:space="preserve">
+    <value>Ievelciet attēlu šeit</value>
+  </data>
+  <data name="NoBoardsVisited" xml:space="preserve">
+    <value>Jūs vēl neesat apmeklējis nevienu ziņojumu dēli, to varat izdarīt šeit:</value>
+  </data>
+  <data name="PictureNote" xml:space="preserve">
+    <value>Attēls</value>
+  </data>
+  <data name="TextNote" xml:space="preserve">
+    <value>Teksts</value>
   </data>
 </root>

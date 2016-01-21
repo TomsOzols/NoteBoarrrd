@@ -14,13 +14,14 @@ namespace NoteBoarrd.Controllers
     public class HubController : Controller
     {
         [HttpGet]
-        public ActionResult Index()     //!!Feeling my bad architecture allready
+        public ActionResult Index(string message = null)
         {
             //!!Add Signal-R updates for everyone
-            //BoardListModel hub = new BoardListModel();
-            IEnumerable<BoardModel> BoardList = HubQueries.GetAllPublicBoards();
+            HubModel model = new HubModel();
+            model.BoardList = HubQueries.GetAllPublicBoards();
+            model.Message = message;
 
-            foreach(BoardModel board in BoardList)          //!!Figure out a better way someday
+            foreach(BoardModel board in model.BoardList)
             {
                 if (board.Password != null)
                 {
@@ -28,7 +29,7 @@ namespace NoteBoarrd.Controllers
                 }
             }
 
-            return View(BoardList);
+            return View(model);
         }
 
         [HttpGet]

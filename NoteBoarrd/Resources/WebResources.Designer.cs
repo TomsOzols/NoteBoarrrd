@@ -61,6 +61,24 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem while deleting the board.
+        /// </summary>
+        public static string BoardDeleteFailure {
+            get {
+                return ResourceManager.GetString("BoardDeleteFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The board was succesfully deleted.
+        /// </summary>
+        public static string BoardDeleteSuccess {
+            get {
+                return ResourceManager.GetString("BoardDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} must be at least {2} characters long.
         /// </summary>
         public static string BoardLengthTooLow {
@@ -106,6 +124,15 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete board.
+        /// </summary>
+        public static string DeleteBoardButton {
+            get {
+                return ResourceManager.GetString("DeleteBoardButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -147,6 +174,15 @@ namespace Resources.Res {
         public static string Hub {
             get {
                 return ResourceManager.GetString("Hub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drop your image here.
+        /// </summary>
+        public static string ImageDropZone {
+            get {
+                return ResourceManager.GetString("ImageDropZone", resourceCulture);
             }
         }
         
@@ -214,6 +250,15 @@ namespace Resources.Res {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You haven&apos;t visited any boards yet! Here, you can visit them here:.
+        /// </summary>
+        public static string NoBoardsVisited {
+            get {
+                return ResourceManager.GetString("NoBoardsVisited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A password is required.
         /// </summary>
         public static string PassRequired {
@@ -237,6 +282,15 @@ namespace Resources.Res {
         public static string PasswordLengthTooLow {
             get {
                 return ResourceManager.GetString("PasswordLengthTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string PictureNote {
+            get {
+                return ResourceManager.GetString("PictureNote", resourceCulture);
             }
         }
         
@@ -291,6 +345,15 @@ namespace Resources.Res {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string TextNote {
+            get {
+                return ResourceManager.GetString("TextNote", resourceCulture);
             }
         }
         

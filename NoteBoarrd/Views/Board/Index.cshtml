@@ -11,27 +11,52 @@
             <h3>@Model.Name</h3>
         </div>
         <div id="GridSelection" class="row">
-            <button>
+            <button id="ChangeToTools">
                 @WebResources.Tools
             </button>
-            <button>
+            <button id="ChangeToSettings">
                 @WebResources.Settings
             </button>
         </div>
         <div id="ToolSelection" class="row">
-            <div id="textNote" class="dropTool" style="background-color: red; width:50px; height:50px"></div>
+            <div class="row">
+                <div id="textNote" style="background-color: red; width:50px; height:50px">@WebResources.TextNote</div>
+                <div id="pictureNote" style="background-color: brown; width:50px; height:50px">@WebResources.PictureNote</div>
+            </div>
+            <div id="newTextNoteDiv" class="row" style="display: none;">
+                <form>
+                    @*@Html.Hidden("type", "Text")*@
+                    <input type="hidden" name="type" value="Text" />
+                    @Html.TextArea("text", htmlAttributes: new { id = "newNoteTextArea" })
+                    <input class="submit" type="submit" />
+                </form>
+            </div>
+            <div id="newPictureNoteDiv" class="row" style="display: none;">
+                <form>
+                    @*@Html.Hidden("type", "Image")*@
+                    <input type="hidden" name="type" value="Image" />
+                    @Html.HiddenFor(x => x.NewNote.Image)
+                    <div id="imageDrop" style="width: 100%; height:400px; background-color: aqua;">
+                        <p>@WebResources.ImageDropZone</p>
+                        <p id="noImageMessage"></p>
+                    </div>
+                    <input class="submit" type="submit" />
+                </form>
+            </div>
         </div>
-        <div id="BoardSettings" class="row hidden">
-            
+        <div id="BoardSettings" class="row" style="display: none">
+            <button id="DeleteBoard">@WebResources.DeleteBoardButton</button>
+            <span id="DeleteBoardError"></span>
         </div>
     </div>
     <div id="Board" class="col-md-8">
         <input id="BoardId" type="hidden" value="@Model.Id" />
         <script type="text/javascript">
             var getNotes = '@Url.Action("GetNotes", "Board")'
+            var deleteBoard = '@Url.Action("DeleteBoard", "Board")'
+            var hubAction = '@Url.Action("Index", "Hub")'
+            var postNote = '@Url.Action("PostNote", "Board")'
         </script>
-        <div id="Shape" style="left:10px; top:10px; width:50px; height:50px; background-color:red;"></div>
-        This is where the notes sit
     </div>
     <div id="Chat" class="col-md-2">
         This is where the chat is

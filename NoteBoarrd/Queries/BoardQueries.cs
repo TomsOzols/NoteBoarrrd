@@ -68,5 +68,72 @@ namespace NoteBoarrd.Queries
                 db.SaveChanges();
             }
         }
+
+        public static bool DeleteBoard (ApplicationUser user, int boardId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Boards.Where(x => x.Id == boardId && x.CreatedBy_Id == user.Id);
+                BoardModel board = query.SingleOrDefault();
+                if (board == null)
+                {
+                    return false;
+                }
+                try
+                {
+                    db.Boards.Remove(board);
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public static int AddNewNote (int boardId, NoteModel note)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                db.Notes.Add(note);
+                db.SaveChanges();
+                return note.Id;
+            }
+        }
+
+        public static NoteModel GetNote(int noteId)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Notes.Where(x => x.Id == noteId);
+                NoteModel note = query.SingleOrDefault();
+                return note;
+            }
+        }
+
+        public static bool UpdateNoteCoord(int noteId, float left, float top)
+        {
+            NoteModel note = GetNote(noteId);
+            note.left = left;
+            note.top = top;
+            using (var db = new ApplicationDbContext())
+            {
+                try
+                {
+                    db.Notes.Attach(note);
+                    var entry = db.Entry(note);
+                    entry.Property(x => x.left).IsModified = true;
+                    entry.Property(x => x.top).IsModified = true;
+                    db.SaveChanges();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
     }
 }

@@ -205,4 +205,25 @@
   <data name="Preferences" xml:space="preserve">
     <value>Account settings</value>
   </data>
+  <data name="BoardDeleteFailure" xml:space="preserve">
+    <value>There was a problem while deleting the board</value>
+  </data>
+  <data name="BoardDeleteSuccess" xml:space="preserve">
+    <value>The board was succesfully deleted</value>
+  </data>
+  <data name="DeleteBoardButton" xml:space="preserve">
+    <value>Delete board</value>
+  </data>
+  <data name="ImageDropZone" xml:space="preserve">
+    <value>Drop your image here</value>
+  </data>
+  <data name="NoBoardsVisited" xml:space="preserve">
+    <value>You haven't visited any boards yet! Here, you can visit them here:</value>
+  </data>
+  <data name="PictureNote" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="TextNote" xml:space="preserve">
+    <value>Text</value>
+  </data>
 </root>

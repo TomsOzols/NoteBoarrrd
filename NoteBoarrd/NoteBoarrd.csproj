@@ -220,6 +220,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Resources\Images\Background-cork.jpg" />
     <Content Include="Scripts\BoardScripts.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -254,6 +255,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BoardModel.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\HubModel.cs" />
     <Compile Include="Models\NoteModel.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Queries\AccountQueries.cs" />
@@ -261,6 +263,11 @@
     <Compile Include="Queries\HubQueries.cs" />
     <Compile Include="Resources\WebResources.lv-LV.Designer.cs">
       <DependentUpon>WebResources.lv-LV.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\WebResources.unused.Designer.cs">
+      <DependentUpon>WebResources.unused.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -314,6 +321,11 @@
     <EmbeddedResource Include="Resources\WebResources.lv-LV.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>WebResources.lv-LV.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Res</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\WebResources.unused.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WebResources.unused.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Res</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\WebResources.resx">

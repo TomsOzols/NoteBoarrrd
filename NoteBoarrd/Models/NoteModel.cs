@@ -43,6 +43,9 @@ namespace NoteBoarrd.Models
         [JsonProperty("boardId")]
         public int BoardId { get; set; }
 
+        [JsonProperty("image")]
+        public byte[] Image { get; set; }
+
         [JsonIgnore]
         public BoardModel Board { get; set; }
     }

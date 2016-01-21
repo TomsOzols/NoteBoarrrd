@@ -58,6 +58,9 @@ namespace NoteBoarrd.Models
         public string CreatedBy_Id { get; set; }
 
         public virtual ApplicationUser CreatedBy { get; set; }
+
+        [NotMapped]
+        public NoteModel NewNote { get; set; }
     }
 
     //public class BoardBlackList

@@ -3,6 +3,11 @@
     text-decoration: none;
 }
 
+body div .row{
+    padding: 0px;
+    margin: 0px;
+}
+
 #Navbar{
     display: inline-block;
     clear:both;
@@ -26,6 +31,11 @@
         color:black;
     }
 
-#Board{
-    height:100vh;
+#Board {
+    height: 90vh;
+    background-image: url('../Resources/Images/Background-cork.jpg');
+}
+
+#newNoteTextArea{
+    height:400px;
 }
